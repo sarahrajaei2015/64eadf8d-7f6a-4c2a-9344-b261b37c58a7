@@ -32,3 +32,14 @@ Example: 1 2 3 4 5
 File Input:
 Provide a file containing the sequence of numbers.
 Example: dotnet run TestCase1.txt
+
+### Run Locally
+1. **Build the Docker Image:**
+
+   ```bash
+   docker build -t sequencefinder .
+
+   Run the Docker Container:
+
+   docker run -it sequencefinder
+
