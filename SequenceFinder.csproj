@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SequenceFinderUnitTests\**" />
+    <EmbeddedResource Remove="SequenceFinderUnitTests\**" />
+    <None Remove="SequenceFinderUnitTests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="TestData\TestCase11.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
