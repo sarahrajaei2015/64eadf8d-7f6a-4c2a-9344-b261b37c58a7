@@ -2,14 +2,35 @@
 using Code_Test.Interfaces;
 using Code_Test;
 
-// Read input from the file
-string inputFilePath = Path.Combine("TestData", "TestCase4.txt");
-string input = File.ReadAllText(inputFilePath);
 
-// Use the LongestIncreasingSubsequenceFinder by default
-ISubsequenceFinder subsequenceFinder = new LongestIncreasingSubsequenceFinder(input);
-SubsequenceContext context = new SubsequenceContext(subsequenceFinder);
+var input = args.Length > 0 ? args[0] : GetUserInput();
 
-List<int> result = context.FindLongestSubsequence();
+ISubsequenceFinder subsequenceFinder = GetSubsequenceFinder(input);
 
+List<int> result = subsequenceFinder.FindLongestSubsequence();
 Console.WriteLine($"Longest Increasing Subsequence: {string.Join(" ", result)}");
+
+
+string GetUserInput()
+{
+	Console.WriteLine("Please enter either:");
+	Console.WriteLine("1. A sequence of numbers separated by spaces (e.g., '1 2 3 4')");
+	Console.WriteLine("2. A file name containing the sequence of numbers");
+
+	Console.Write("Your input: ");
+	return Console.ReadLine();
+}
+
+ISubsequenceFinder GetSubsequenceFinder(string input)
+{
+	string inpurFilePath = Path.Combine("TestData", input);
+	if (File.Exists(inpurFilePath))
+	{
+		string fileContent = File.ReadAllText(inpurFilePath);
+		return new LongestIncreasingSubsequenceFinder(fileContent);
+	}
+	else
+	{
+		return new LongestIncreasingSubsequenceFinder(input);
+	}
+}
