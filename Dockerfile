@@ -22,4 +22,4 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 # Set the entry point for the application
-ENTRYPOINT ["dotnet", "Code-Test.dll"]
+ENTRYPOINT ["dotnet", "SequenceFinder.dll"]
